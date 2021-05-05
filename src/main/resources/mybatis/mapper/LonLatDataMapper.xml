@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wiscom.hence.dao.LonLatDataMapper">
+  <resultMap id="BaseResultMap" type="com.wiscom.hence.model.LonLatData">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="personLatLog" jdbcType="VARCHAR" property="personlatlog" />
+    <result column="lantitude" jdbcType="VARCHAR" property="lantitude" />
+    <result column="longtitude" jdbcType="VARCHAR" property="longtitude" />
+    <result column="personCount" jdbcType="BIGINT" property="personcount" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updatetime" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lon_lat_data
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wiscom.hence.model.LonLatData">
+    insert into lon_lat_data (ID, personLatLog, lantitude, 
+      longtitude, personCount, createTime, 
+      updateTime)
+    values (#{id,jdbcType=BIGINT}, #{personlatlog,jdbcType=VARCHAR}, #{lantitude,jdbcType=VARCHAR}, 
+      #{longtitude,jdbcType=VARCHAR}, #{personcount,jdbcType=BIGINT}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.wiscom.hence.model.LonLatData">
+    update lon_lat_data
+    set personLatLog = #{personlatlog,jdbcType=VARCHAR},
+      lantitude = #{lantitude,jdbcType=VARCHAR},
+      longtitude = #{longtitude,jdbcType=VARCHAR},
+      personCount = #{personcount,jdbcType=BIGINT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select ID, personLatLog, lantitude, longtitude, personCount, createTime, updateTime
+    from lon_lat_data
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select ID, personLatLog, lantitude, longtitude, personCount, createTime, updateTime
+    from lon_lat_data
+  </select>
+</mapper>

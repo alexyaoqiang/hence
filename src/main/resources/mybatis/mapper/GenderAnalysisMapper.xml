@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wiscom.hence.dao.GenderAnalysisMapper" >
+  <resultMap id="BaseResultMap" type="com.wiscom.hence.model.GenderAnalysis" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="elid" property="elid" jdbcType="VARCHAR" />
+    <result column="externalPersonFemale" property="externalpersonfemale" jdbcType="INTEGER" />
+    <result column="externalPersonMale" property="externalpersonmale" jdbcType="INTEGER" />
+    <result column="foreignPerson" property="foreignperson" jdbcType="INTEGER" />
+    <result column="residentPersonFemale" property="residentpersonfemale" jdbcType="INTEGER" />
+    <result column="residentPersonMale" property="residentpersonmale" jdbcType="INTEGER" />
+    <result column="xinjiangPersonFemale" property="xinjiangpersonfemale" jdbcType="INTEGER" />
+    <result column="xinjiangPersonMale" property="xinjiangpersonmale" jdbcType="INTEGER" />
+    <result column="xizangPersonFemale" property="xizangpersonfemale" jdbcType="INTEGER" />
+    <result column="xizangPersonMale" property="xizangpersonmale" jdbcType="INTEGER" />
+    <result column="totalFemale" property="totalfemale" jdbcType="BIGINT" />
+    <result column="totalMale" property="totalmale" jdbcType="BIGINT" />
+    <result column="timeFrame" property="timeframe" jdbcType="VARCHAR" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from gender_analysis
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wiscom.hence.model.GenderAnalysis" >
+    insert into gender_analysis (ID, elid, externalPersonFemale, 
+      externalPersonMale, foreignPerson, residentPersonFemale, 
+      residentPersonMale, xinjiangPersonFemale, 
+      xinjiangPersonMale, xizangPersonFemale, 
+      xizangPersonMale, totalFemale, totalMale, 
+      timeFrame, createTime, updateTime
+      )
+    values (#{id,jdbcType=BIGINT}, #{elid,jdbcType=VARCHAR}, #{externalpersonfemale,jdbcType=INTEGER}, 
+      #{externalpersonmale,jdbcType=INTEGER}, #{foreignperson,jdbcType=INTEGER}, #{residentpersonfemale,jdbcType=INTEGER}, 
+      #{residentpersonmale,jdbcType=INTEGER}, #{xinjiangpersonfemale,jdbcType=INTEGER}, 
+      #{xinjiangpersonmale,jdbcType=INTEGER}, #{xizangpersonfemale,jdbcType=INTEGER}, 
+      #{xizangpersonmale,jdbcType=INTEGER}, #{totalfemale,jdbcType=BIGINT}, #{totalmale,jdbcType=BIGINT}, 
+      #{timeframe,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.wiscom.hence.model.GenderAnalysis" >
+    update gender_analysis
+    set elid = #{elid,jdbcType=VARCHAR},
+      externalPersonFemale = #{externalpersonfemale,jdbcType=INTEGER},
+      externalPersonMale = #{externalpersonmale,jdbcType=INTEGER},
+      foreignPerson = #{foreignperson,jdbcType=INTEGER},
+      residentPersonFemale = #{residentpersonfemale,jdbcType=INTEGER},
+      residentPersonMale = #{residentpersonmale,jdbcType=INTEGER},
+      xinjiangPersonFemale = #{xinjiangpersonfemale,jdbcType=INTEGER},
+      xinjiangPersonMale = #{xinjiangpersonmale,jdbcType=INTEGER},
+      xizangPersonFemale = #{xizangpersonfemale,jdbcType=INTEGER},
+      xizangPersonMale = #{xizangpersonmale,jdbcType=INTEGER},
+      totalFemale = #{totalfemale,jdbcType=BIGINT},
+      totalMale = #{totalmale,jdbcType=BIGINT},
+      timeFrame = #{timeframe,jdbcType=VARCHAR},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select ID, elid, externalPersonFemale, externalPersonMale, foreignPerson, residentPersonFemale, 
+    residentPersonMale, xinjiangPersonFemale, xinjiangPersonMale, xizangPersonFemale, 
+    xizangPersonMale, totalFemale, totalMale, timeFrame, createTime, updateTime
+    from gender_analysis
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select ID, elid, externalPersonFemale, externalPersonMale, foreignPerson, residentPersonFemale, 
+    residentPersonMale, xinjiangPersonFemale, xinjiangPersonMale, xizangPersonFemale, 
+    xizangPersonMale, totalFemale, totalMale, timeFrame, createTime, updateTime
+    from gender_analysis
+  </select>
+</mapper>

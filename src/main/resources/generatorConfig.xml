@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--数据库驱动路径 -->
+    <context id="DB2Tables" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://dp-data-inter.mysql.rds.aliyuncs.com:3306/hence"
+                        userId="wiscom" password="wiscom@123">
+            <property name="useInformationSchema" value="true"/>
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+        <!--域模型层,生成的目标包,项目目标源文件 -->
+        <javaModelGenerator targetPackage="com.wiscom.hence.model"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!--XML映射文件,生成的位置（目标包）,源代码文件夹 -->
+        <sqlMapGenerator targetPackage="/" targetProject="src/main/resources/mybatis/mapper/">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!--XML对应的Mapper类 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.wiscom.hence.dao" targetProject="src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+        <!--下面是数据库表名和项目中需要生成类的名称，建议和数据库保持一致，如果有多个表，添加多个节点即可 -->
+
+        <table tableName="pedestrianflow_day" domainObjectName="PedestrianflowDay"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false" >
+        </table>
+    </context>
+
+</generatorConfiguration>

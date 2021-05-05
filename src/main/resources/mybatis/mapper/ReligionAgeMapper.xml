@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wiscom.hence.dao.ReligionAgeMapper" >
+  <resultMap id="BaseResultMap" type="com.wiscom.hence.model.ReligionAge" >
+    <id column="ID" property="id" jdbcType="BIGINT" />
+    <result column="age" property="age" jdbcType="VARCHAR" />
+    <result column="ageNum" property="agenum" jdbcType="BIGINT" />
+    <result column="createTime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from religion_age
+    where ID = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.wiscom.hence.model.ReligionAge" >
+    insert into religion_age (ID, age, ageNum, 
+      createTime, updateTime)
+    values (#{id,jdbcType=BIGINT}, #{age,jdbcType=VARCHAR}, #{agenum,jdbcType=BIGINT}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{updatetime,jdbcType=TIMESTAMP})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.wiscom.hence.model.ReligionAge" >
+    update religion_age
+    set age = #{age,jdbcType=VARCHAR},
+      ageNum = #{agenum,jdbcType=BIGINT},
+      createTime = #{createtime,jdbcType=TIMESTAMP},
+      updateTime = #{updatetime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select ID, age, ageNum, createTime, updateTime
+    from religion_age
+    where ID = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select ID, age, ageNum, createTime, updateTime
+    from religion_age
+  </select>
+</mapper>
